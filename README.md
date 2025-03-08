@@ -6,3 +6,17 @@ Includes:
 - Vesktop client with catppuccin theme
 - Kitty + Fastfetch + zsh configuration (based on [zenshrc](https://github.com/dreamsofautonomy/zensh/blob/main/.zshrc)
 - Barely complete Waybar configuration (yeah that's probably gonna be worked on)
+
+# Installation
+
+Clone the repo
+
+    git clone https://github.com/catgirlichinose/dotfiles.git
+
+And run the installer
+
+    ./installer.sh
+    
+# Credits
+- [dreamsofautonomy](https://github.com/dreamsofautonomy) and his zshrc configuration (from which i "based" mine)
+- [Godiesc](https://github.com/godiesc) and their Firefox GX theme
