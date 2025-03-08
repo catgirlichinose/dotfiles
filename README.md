@@ -8,7 +8,7 @@ Includes:
 - Barely complete Waybar configuration (yeah that's probably gonna be worked on)
 - Customized NvChad config
 
-# Installation
+## Installation
 
 Clone the repo
 
@@ -18,7 +18,7 @@ And run the installer
 
     ./installer.sh
     
-# Credits
+## Credits
 - [dreamsofautonomy](https://github.com/dreamsofautonomy) and his zshrc configuration (from which i "based" mine)
 - [Godiesc](https://github.com/godiesc) and their Firefox GX theme
 - [NvChad](https://github.com/NvChad) for their neovim build that i modified
