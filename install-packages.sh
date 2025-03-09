@@ -13,12 +13,3 @@ yay -S oh-my-posh otf-codenewroman-nerd vesktop
 
 printf ${BLUE}'\nInstalling dotfiles\n\n'${NOTBLUE}
 
-mv config .config
-mv mozilla .mozilla
-mv wallpaper .wallpaper 
-mv zshrc .zshrc
-
-rm -rf ~/.config/
-rm -rf ~/.zshrc
-cd ~/dotfiles
-mv .* ~
