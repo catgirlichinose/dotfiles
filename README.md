@@ -11,13 +11,21 @@ Includes:
 
 ## Installation
 
-Clone the repo
+Clone the repo in the home directory
 
     git clone https://github.com/catgirlichinose/dotfiles.git
 
-And run the installer
+Install stow
 
-    ./installer.sh
+    sudo pacman -S stow
+
+Run stow in the dotfiles directory
+
+    stow .
+
+And run the package installer
+
+    ./install-packages.sh
     
 ## Credits
 - [dreamsofautonomy](https://github.com/dreamsofautonomy) and his zshrc configuration (from which i "based" mine)
