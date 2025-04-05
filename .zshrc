@@ -83,7 +83,6 @@ alias ll='ls -l'
 alias lla='ls -la'
 alias vim='nvim'
 alias c='clear'
-alias cvi='NVIM_APPNAME=neovim nvim'
 
 fastfetch
 
@@ -91,5 +90,3 @@ fastfetch
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(oh-my-posh init zsh --config ~/.config/omp/catppuccin_mocha.omp.json)"
-
-export PATH=$PATH:/Users/kuonichinose/.spicetify
