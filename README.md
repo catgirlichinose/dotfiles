@@ -27,6 +27,13 @@ And run the package installer
 
     ./install-packages.sh
     
+## TODO
+
+- fix the poorly made install script
+- actually configure waybar properly
+- prob format everything a bit better
+- banana
+
 ## Credits
 - [dreamsofautonomy](https://github.com/dreamsofautonomy) and his zshrc configuration (from which i "based" mine)
 - [Godiesc](https://github.com/godiesc) and their Firefox GX theme
