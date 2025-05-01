@@ -10,6 +10,8 @@ function print_blue() {
 }
 
 if pacman -Qi paru > /dev/null 2>&1; then
+    echo "paru already installed, skipping."
+else
     # Install paru from AUR
     print_blue "\nInstalling paru
     "
