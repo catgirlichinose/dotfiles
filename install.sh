@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Define color variables for output
+RED='\e[31m'
 GREEN='\e[32m'
-BLUE='\e[32m'
+BLUE='\e[34m'
 BOLD='\e[1m'
 RESET='\e[0m'
 
@@ -12,6 +13,10 @@ epic_print_function_green() {
 
 epic_print_function_blue() {
     echo -e "\n${BLUE}==>${RESET} ${BOLD}$1${RESET}"
+}
+
+epic_print_function_red() {
+    echo -e "\n${RED}==>${RESET} ${BOLD}$1${RESET}"
 }
 
 # Function to print messages in blue
@@ -70,6 +75,8 @@ if [[ "$(pwd)" == *dotfiles* ]]; then
         rm -fr ~/.*
         rm -fr ~/.*/
         stow . --dotfiles
+else
+    epic_print_function_red 'Current directory does not contain cloned dotfiles, head into cloned repo and run "stow ."'
 fi
 
 echo "${BOLD}To apply changes, reboot the system.${RESET}"
