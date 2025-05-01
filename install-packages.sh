@@ -1,16 +1,55 @@
+#!/bin/bash
+
+# Define color variables for output
 BLUE='\033[34m'
 NOTBLUE='\033[0m'
 
-printf ${BLUE}'\nInstalling YAY\n\n'${NOTBLUE}
+# Function to print messages in blue
+function print_blue() {
+    echo -e "${BLUE}$1${NOTBLUE}"
+}
 
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
+# Install paru from AUR
+print_blue "\nInstalling paru
+"
+git clone https://aur.archlinux.org/paru.git
+cd paru || { echo "Failed to enter 'paru' directory"; exit 1; }
+makepkg -si --noconfirm
+cd ..
 
-printf ${BLUE}'\nInstalling packages\n\n'${NOTBLUE}
+# Define the list of packages
+packages=(
+    hyprland
+    hyprpaper
+    eza
+    waybar
+    rofi
+    nautilus
+    kitty
+    fastfetch
+    zoxide
+    fzf
+    firefox
+    oh-my-posh
+    otf-codenewroman-nerd
+    vesktop
+)
 
-sudo pacman -Sy hyprland hyprpaper eza waybar rofi nautilus kitty fastfetch zoxide fzf firefox 
-yay -S oh-my-posh otf-codenewroman-nerd vesktop
+# Install packages if not already installed
+for package in "${packages[@]}"; do
+    if pacman -Qi "$package" > /dev/null 2>&1; then
+        echo "$package is already installed, skipping."
+    else
+        paru -S --noconfirm "$package"
+    fi
+done
 
-cd ~/dotfiles
-rm -f install-packages.sh README.md
+# Check if current directory is 'dotfiles' (case-insensitive)
+if [[ "$(pwd)" == *dotfiles* ]]; then
+    # Remove specific files if they exist
+    rm -f install-packages.sh README.md
+    # Use stow to manage dotfiles
+    stow .
+else
+    echo 'Run "stow ." in the dotfiles folder'
+fi
