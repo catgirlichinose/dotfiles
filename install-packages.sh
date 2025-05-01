@@ -9,13 +9,15 @@ function print_blue() {
     echo -e "${BLUE}$1${NOTBLUE}"
 }
 
-# Install paru from AUR
-print_blue "\nInstalling paru
-"
-git clone https://aur.archlinux.org/paru.git
-cd paru || { echo "Failed to enter 'paru' directory"; exit 1; }
-makepkg -si --noconfirm
-cd ..
+if pacman -Qi paru > /dev/null 2>&1; then
+    # Install paru from AUR
+    print_blue "\nInstalling paru
+    "
+    git clone https://aur.archlinux.org/paru.git
+    cd paru || { echo "Failed to enter 'paru' directory"; exit 1; }
+    makepkg -si --noconfirm
+    cd ..
+fi
 
 # Define the list of packages
 packages=(
@@ -35,7 +37,13 @@ packages=(
     vesktop
     neovim
     stow
+    zsh
 )
+
+# Change default shell to zsh
+if $SHELL != zsh; do
+    chsh
+fi
 
 # Install packages if not already installed
 for package in "${packages[@]}"; do
