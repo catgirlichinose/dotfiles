@@ -49,7 +49,7 @@ packages=(
     zsh
 )
 
-epic_print_function "Installing packages"
+epic_print_function_green "Installing packages"
 # Install packages if not already installed
 for package in "${packages[@]}"; do
     if pacman -Qi "$package" > /dev/null 2>&1; then
