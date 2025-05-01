@@ -41,12 +41,6 @@ packages=(
     stow
     zsh
 )
-
-# Change default shell to zsh
-#if $SHELL != zsh; then
-    #chsh
-#fi
-
 # Install packages if not already installed
 for package in "${packages[@]}"; do
     if pacman -Qi "$package" > /dev/null 2>&1; then
@@ -61,7 +55,20 @@ if [[ "$(pwd)" == *dotfiles* ]]; then
     # Remove specific files if they exist
     rm -f install-packages.sh README.md
     # Use stow to manage dotfiles
-    stow .
-else
-    echo 'Run "stow ." in the dotfiles folder'
+    if stow . --dotfiles > /dev/null 2>&1; then
+        echo 'Dotfiles successfully stowed'
+    else
+        rm -r ~/.* ~/.*/
+        stow . --dotfiles
 fi
+
+i=3
+echo ''
+echo "Reboot in "
+while [ $i -ge 1 ]; do
+    echo "$i"
+    sleep 1
+    i=$((i - 1))
+done
+
+reboot
