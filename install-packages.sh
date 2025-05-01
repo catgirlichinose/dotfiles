@@ -43,9 +43,9 @@ packages=(
 )
 
 # Change default shell to zsh
-if $SHELL != zsh; do
-    chsh
-fi
+#if $SHELL != zsh; then
+    #chsh
+#fi
 
 # Install packages if not already installed
 for package in "${packages[@]}"; do
