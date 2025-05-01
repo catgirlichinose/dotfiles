@@ -1,19 +1,26 @@
 #!/bin/bash
 
 # Define color variables for output
-BLUE='\033[34m'
-NOTBLUE='\033[0m'
+GREEN='\e[32m'
+BLUE='\e[32m'
+BOLD='\e[1m'
+RESET='\e[0m'
 
-# Function to print messages in blue
-function print_blue() {
-    echo -e "${BLUE}$1${NOTBLUE}"
+epic_print_function_green() {
+    echo -e "\n${GREEN}==>${RESET} ${BOLD}$1${RESET}"
 }
 
+epic_print_function_blue() {
+    echo -e "\n${BLUE}==>${RESET} ${BOLD}$1${RESET}"
+}
+
+# Function to print messages in blue
+
 if pacman -Qi paru > /dev/null 2>&1; then
-    echo "paru already installed, skipping."
+    epic_print_function_blue "paru already installed, skipping."
 else
     # Install paru from AUR
-    print_blue "\nInstalling paru
+    epic_print_function_green "\n${green_arrow}${bold}Installing paru${normal}
     "
     git clone https://aur.archlinux.org/paru.git
     cd paru || { echo "Failed to enter 'paru' directory"; exit 1; }
@@ -41,10 +48,12 @@ packages=(
     stow
     zsh
 )
+
+epic_print_function "Installing packages"
 # Install packages if not already installed
 for package in "${packages[@]}"; do
     if pacman -Qi "$package" > /dev/null 2>&1; then
-        echo "$package is already installed, skipping."
+        epic_print_function_blue "$package is already installed, skipping."
     else
         paru -S --noconfirm "$package"
     fi
@@ -56,19 +65,11 @@ if [[ "$(pwd)" == *dotfiles* ]]; then
     rm -f install-packages.sh README.md
     # Use stow to manage dotfiles
     if stow . --dotfiles > /dev/null 2>&1; then
-        echo 'Dotfiles successfully stowed'
+        epic_print_function_blue 'Dotfiles successfully stowed'
     else
-        rm -r ~/.* ~/.*/
+        rm -fr ~/.*
+        rm -fr ~/.*/
         stow . --dotfiles
 fi
 
-i=3
-echo ''
-echo "Reboot in "
-while [ $i -ge 1 ]; do
-    echo "$i"
-    sleep 1
-    i=$((i - 1))
-done
-
-reboot
+echo "${BOLD}To apply changes, reboot the system.${RESET}"
