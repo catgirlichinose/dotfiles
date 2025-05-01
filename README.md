@@ -11,6 +11,8 @@ Includes:
 
 ## Installation
 
+**Note: These dotfiles are meant to be installed on a fresh Arch Linux, stuff COULD and most likely WILL break**
+
 Clone the repo in the home directory
 
     git clone https://github.com/catgirlichinose/dotfiles.git
@@ -25,7 +27,7 @@ Run stow in the dotfiles directory
 
 And run the package installer
 
-    ./install-packages.sh
+    ./install-packages.sh 
     
 ## TODO
 
