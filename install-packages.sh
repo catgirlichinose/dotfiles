@@ -33,6 +33,8 @@ packages=(
     oh-my-posh
     otf-codenewroman-nerd
     vesktop
+    neovim
+    stow
 )
 
 # Install packages if not already installed
