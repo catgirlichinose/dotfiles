@@ -31,10 +31,10 @@ And run the package installer
     
 ## TODO
 
-- fix the poorly made install script
-- actually configure waybar properly
-- prob format everything a bit better
-- banana
+- [x] fix the poorly made install script
+- [ ] actually configure waybar properly
+- [ ] probably format everything a bit better
+- [ ] banana
 
 ## Credits
 - [dreamsofautonomy](https://github.com/dreamsofautonomy) and his zshrc configuration (from which i "based" mine)
