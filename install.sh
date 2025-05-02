@@ -75,8 +75,6 @@ if [[ "$(pwd)" == *dotfiles* ]]; then
         rm -fr ~/.*
         rm -fr ~/.*/
         stow . --dotfiles
-else
-    epic_print_function_red 'Current directory does not contain cloned dotfiles, head into cloned repo and run "stow ."'
 fi
 
 echo "${BOLD}To apply changes, reboot the system.${RESET}"
