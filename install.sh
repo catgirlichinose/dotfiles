@@ -25,7 +25,7 @@ if pacman -Qi paru > /dev/null 2>&1; then
     epic_print_function_blue "paru already installed, skipping."
 else
     # Install paru from AUR
-    epic_print_function_green "\n${green_arrow}${bold}Installing paru${normal}
+    epic_print_function_green "Installing paru
     "
     git clone https://aur.archlinux.org/paru.git
     cd paru || { echo "Failed to enter 'paru' directory"; exit 1; }
