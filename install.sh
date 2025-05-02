@@ -8,15 +8,15 @@ BOLD='\e[1m'
 RESET='\e[0m'
 
 epic_print_function_green() {
-    echo -e "\n${GREEN}==>${RESET} ${BOLD}$1${RESET}"
+    echo -e "\n${BOLD}${GREEN}==>${RESET} ${BOLD}$1${RESET}"
 }
 
 epic_print_function_blue() {
-    echo -e "\n${BLUE}==>${RESET} ${BOLD}$1${RESET}"
+    echo -e "\n${BOLD}${BLUE}==>${RESET} ${BOLD}$1${RESET}"
 }
 
 epic_print_function_red() {
-    echo -e "\n${RED}==>${RESET} ${BOLD}$1${RESET}"
+    echo -e "\n${BOLD}${RED}==>${RESET} ${BOLD}$1${RESET}"
 }
 
 # Function to print messages in blue
@@ -52,6 +52,7 @@ packages=(
     neovim
     stow
     zsh
+    unzip
 )
 
 epic_print_function_green "Installing packages"
@@ -72,9 +73,12 @@ if [[ "$(pwd)" == *dotfiles* ]]; then
     if stow . --dotfiles > /dev/null 2>&1; then
         epic_print_function_blue 'Dotfiles successfully stowed'
     else
-        rm -fr ~/.*
-        rm -fr ~/.*/
+        rm -fr ~/.config/
         stow . --dotfiles
+fi
+
+if $SHELL != zsh; then
+    chsh -s /bin/zsh
 fi
 
 echo "${BOLD}To apply changes, reboot the system.${RESET}"
