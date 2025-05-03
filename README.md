@@ -26,7 +26,8 @@ and run the installer
 - [x] fix the poorly made install script
 - [ ] actually configure waybar properly
 - [ ] probably format everything a bit better
-- [ ] maybe add more wallpapers???? idk
+- [ ] make a miku themed sddm theme
+- [ ] maybe add more wallpapers????
 - [ ] banana
 
 ## Credits
