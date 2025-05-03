@@ -127,4 +127,4 @@ if [[ "$SHELL" != "/bin/zsh" ]]; then
     chsh -s /bin/zsh
 fi
 
-echo "${BOLD}To apply changes, reboot the system.${RESET}"
+reboot
