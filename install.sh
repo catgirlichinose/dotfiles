@@ -54,7 +54,7 @@ install_paru() {
         pushd paru || { echo "Failed to enter 'paru' directory"; exit 1; }
         makepkg -si --noconfirm
         popd
-        rm -r paru/
+        rm -fr paru/
     fi
 }
 
@@ -111,13 +111,11 @@ done
 
 # Check if current directory is 'dotfiles' (case-insensitive)
 if [[ "$(pwd)" == *dotfiles* ]]; then
-    # Remove specific files if they exist
-    rm -f install-packages.sh README.md
     # Use stow to manage dotfiles
     if stow . --dotfiles > /dev/null 2>&1; then
         epic_print_function 'Dotfiles successfully stowed' "blue"
     else
-        rm -r ~/.config/
+        rm -fr ~/.config/
         stow . --dotfiles
     fi
 fi
