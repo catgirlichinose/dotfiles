@@ -31,6 +31,7 @@ else
     cd paru || { echo "Failed to enter 'paru' directory"; exit 1; }
     makepkg -si --noconfirm
     cd ..
+    rm -r paru/
 fi
 
 # Define the list of packages
@@ -73,8 +74,9 @@ if [[ "$(pwd)" == *dotfiles* ]]; then
     if stow . --dotfiles > /dev/null 2>&1; then
         epic_print_function_blue 'Dotfiles successfully stowed'
     else
-        rm -fr ~/.config/
+        rm -r ~/.config/
         stow . --dotfiles
+    fi
 fi
 
 if $SHELL != zsh; then
