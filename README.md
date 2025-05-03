@@ -25,6 +25,7 @@ and run the installer
 
 - [x] fix the poorly made install script
 - [ ] actually configure waybar properly
+- [ ] find a way to automatically setup firefox extensions  
 - [ ] probably format everything a bit better
 - [ ] make a miku themed sddm theme
 - [ ] maybe add more wallpapers????
