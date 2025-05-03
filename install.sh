@@ -79,8 +79,7 @@ install_paru
 
 # Define the list of packages
 packages=(
-    # hyprland
-    hyprland-git
+    hyprland
     hyprpaper
     eza
     waybar
