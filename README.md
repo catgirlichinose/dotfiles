@@ -17,23 +17,16 @@ Clone the repo in the home directory
 
     git clone https://github.com/catgirlichinose/dotfiles.git
 
-Install stow
+and run the installer
 
-    sudo pacman -S stow
-
-Run stow in the dotfiles directory
-
-    stow .
-
-And run the package installer
-
-    ./install-packages.sh 
+    ./install.sh 
     
 ## TODO
 
 - [x] fix the poorly made install script
 - [ ] actually configure waybar properly
 - [ ] probably format everything a bit better
+- [ ] maybe add more wallpapers???? idk
 - [ ] banana
 
 ## Credits
