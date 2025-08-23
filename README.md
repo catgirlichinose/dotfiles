@@ -1,7 +1,7 @@
 # My Hatsune Miku themed hyprland dotfiles (a lot of stuff might change)
 
 Includes:
-- Catppuccin themed GTK and Firefox theme (GTK theme made with gradience, Firefox is a semi-modified version of [Firefox GX](https://github.com/Godiesc/firefox-gx).
+- Catppuccin themed GTK and Firefox theme (GTK theme made with gradience)
 - Hyprland and Hyprpaper configuration made by me
 - Rofi configuration
 - Vesktop client with catppuccin theme
