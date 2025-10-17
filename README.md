@@ -33,6 +33,5 @@ and run the installer
 
 ## Credits
 - [dreamsofautonomy](https://github.com/dreamsofautonomy) and his zshrc configuration (from which i "based" mine)
-- [Godiesc](https://github.com/godiesc) and their Firefox GX theme
 - [NvChad](https://github.com/NvChad) for their neovim build that i modified
 - [adi1090x](https://github.com/adi1090x) for their Rofi configs used in this dotfiles
