@@ -3,37 +3,42 @@
 # Define color variables for output
 RED='\e[31m'
 GREEN='\e[32m'
+YELLOW='\e[33m'
 BLUE='\e[34m'
 BOLD='\e[1m'
 RESET='\e[0m'
 
 epic_print_function() {
     case $2 in
-        green)
+        success)
             echo -e "\n${BOLD}${GREEN}==>${RESET} ${BOLD}$1${RESET}";;
-        blue)
+        info)
             echo -e "\n${BOLD}${BLUE}==>${RESET} ${BOLD}$1${RESET}";;
-        red)
+        warning)
+            echo -e "\n${BOLD}${YELLOW}==>${RESET} ${BOLD}$1${RESET}";;
+        error)
             echo -e "\n${BOLD}${RED}==>${RESET} ${BOLD}$1${RESET}";;
     esac
 }
 
-install_paru() {
-    if pacman -Qi paru > /dev/null 2>&1; then
-        epic_print_function "paru already installed, skipping." "blue"
-    else
-        # Install paru from AUR
-        epic_print_function "Installing paru
-        " "green"
-        git clone https://aur.archlinux.org/paru.git
-        pushd paru || { echo "Failed to enter 'paru' directory"; exit 1; }
-        makepkg -si --noconfirm
-        popd
-        rm -fr paru/
-    fi
-}
+# Check whether the user is connected
+if ping -c 1 google.com > /dev/null 2>&1; then
+    :
+else
+    epic_print_function "Connection not available, the installer won't proceed" error
+    exit
+fi
 
-install_paru
+# Check if Paru is installed
+if pacman -Qi paru > /dev/null 2>&1; then
+    epic_print_function "paru already installed, skipping." info
+else
+    # Clone, build and install paru from the AUR
+    epic_print_function "Installing paru" info
+    git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noconfirm 
+    cd - && rm -fr paru/
+    epic_print_function "Paru has been successfully installed" success
+fi
 
 # Define the list of packages
 packages=(
@@ -52,30 +57,30 @@ packages=(
     otf-codenewroman-nerd
     vesktop
     neovim
-    stow
     zsh
     unzip
 )
 
-epic_print_function "Installing packages" "green"
+epic_print_function "Installing packages" info
 # Install packages if not already installed
 for package in "${packages[@]}"; do
     if pacman -Qi "$package" > /dev/null 2>&1; then
-        epic_print_function "$package is already installed, skipping." "blue"
+        epic_print_function "$package is already installed, skipping." info
     else
         paru -S --noconfirm "$package"
     fi
 done
 
-# Check if current directory is 'dotfiles' (case-insensitive)
+# Check if current directory is 'dotfiles'
 if [[ "$(pwd)" == *dotfiles* ]]; then
-    # Use stow to manage dotfiles
-    if stow . --dotfiles > /dev/null 2>&1; then
-        epic_print_function 'Dotfiles successfully stowed' "blue"
-    else
-        rm -fr ~/.config/
-        stow . --dotfiles
-    fi
+    cp -r .config/* ~/.config/
+    cp -r .wallpaper/ ~/
+    cp .zshrc ~/
+    cd .. && rm -fr dotfiles/
+    epic_print_function "Configs successfully copied" success
+else
+    epic_print_function "Configs couldn't be found, are you in the right folder?" error
+    touch ~/.zshrc
 fi
 
 if [[ "$SHELL" != "/bin/zsh" ]]; then
