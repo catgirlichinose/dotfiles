@@ -1,29 +1,4 @@
 #!/bin/bash
-
-# Check if git and/or networkmanager
-
-# Check if Git is installed
-if pacman -Qi git > /dev/null 2>&1; then
-    # Git is installed
-    is_git_installed=1
-else
-    # Git is NOT installed
-    is_git_installed=0
-fi
-
-# Check if NetworkManager is installed
-if pacman -Qi networkmanager > /dev/null 2>&1; then
-    if systemctl is-active --quiet NetworkManager; then
-        # NetworkManager is installed and running
-        is_nm_installed=1
-    else
-        # NetworkManager is installed but not running
-        is_nm_installed=2
-    fi
-else
-    # NetworkManager is NOT installed
-    is_nm_installed=0
-fi
     
 # Define color variables for output
 RED='\e[31m'
@@ -57,23 +32,6 @@ install_paru() {
         rm -fr paru/
     fi
 }
-
-case $is_git_installed in
-    1)
-        :;;
-    0)
-        sudo pacman -S --noconfirm git;;
-esac
-
-case $is_nm_installed in
-    0)
-        sudo pacman -S --noconfirm networkmanager
-        sudo systemctl enable --now NetworkManager;;
-    1)
-        :;;
-    2)
-        sudo systemctl enable --now NetworkManager;;
-esac
 
 install_paru
 
