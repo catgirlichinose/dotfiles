@@ -76,7 +76,6 @@ if [[ "$(pwd)" == *dotfiles* ]]; then
     cp -r .config/* ~/.config/
     cp -r .wallpaper/ ~/
     cp .zshrc ~/
-    cd .. && rm -fr dotfiles/
     epic_print_function "Configs successfully copied" success
 else
     epic_print_function "Configs couldn't be found, are you in the right folder?" error
