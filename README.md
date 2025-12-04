@@ -3,11 +3,9 @@
 Includes:
 - Catppuccin themed GTK and Firefox theme (GTK theme made with gradience)
 - Hyprland and Hyprpaper configuration made by me
-- Rofi configuration
 - Vesktop client with catppuccin theme
 - Kitty + Fastfetch + zsh configuration (based on [zenshrc](https://github.com/dreamsofautonomy/zensh/blob/))
 - Barely complete Waybar configuration (yeah that's probably gonna be worked on)
-- Customized NvChad config
 
 ## Installation
 
@@ -33,5 +31,3 @@ and run the installer
 
 ## Credits
 - [dreamsofautonomy](https://github.com/dreamsofautonomy) and his zshrc configuration (from which i "based" mine)
-- [NvChad](https://github.com/NvChad) for their neovim build that i modified
-- [adi1090x](https://github.com/adi1090x) for their Rofi configs used in this dotfiles
