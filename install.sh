@@ -35,7 +35,7 @@ if pacman -Qi paru > /dev/null 2>&1; then
 else
     # Clone, build and install paru from the AUR
     epic_print_function "Installing paru" info
-    git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noconfirm 
+    git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si
     cd - && rm -fr paru/
     epic_print_function "Paru has been successfully installed" success
 fi
